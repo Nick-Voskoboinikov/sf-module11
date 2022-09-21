@@ -159,10 +159,34 @@ let sortTime = '-'; // инициализация состояния време�
 
 const comparationColor = (a, b) => {
   // TODO: допишите функцию сравнения двух элементов по цвету
-  const priority = ['желтый', 'зеленый', 'фиолетовый', 'светло-коричневый', 'розово-красный']
-  const priority1 = priority.indexOf(a.color);
-  const priority2 = priority.indexOf(b.color);
-  return priority1 > priority2;
+  if (a.color === b.color) {
+    return 0;
+  }
+  return a.color < b.color ? -1 : 1;
+};
+function exchange(firstIndex, secondIndex) {
+  const temp = fruits[firstIndex];
+  fruits[firstIndex] = fruits[secondIndex];
+  fruits[secondIndex] = temp;
+};
+function separator(fruits, left, right) {
+  var pivot = fruits[Math.floor((right + left) / 2)],
+    i = left,
+    j = right;
+  while (i <= j) {
+    while (fruits[i] < pivot) {
+      i++;
+    }
+    while (fruits[j] > pivot) {
+      j--;
+    }
+    if (i <= j) {
+      exchange(i, j);
+      i++;
+      j--;
+    }
+  }
+  return i;
 };
 
 const sortAPI = {
