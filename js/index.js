@@ -159,31 +159,48 @@ let sortTime = '-'; // инициализация состояния време�
 
 const comparationColor = (a, b) => {
   // TODO: допишите функцию сравнения двух элементов по цвету
-  if (a.color === b.color) {
-    return 0;
-  }
-  return a.color < b.color ? -1 : 1;
+  return (a.color === b.color) ? 0 : (a.color < b.color ?  1 : -1);
 };
 
 const sortAPI = {
   bubbleSort(arr, comparation) {
     // TODO: допишите функцию сортировки пузырьком
 
-    let n = arr.length;
-    for (let i = 0; i < n-1; i++) { 
-      for (let j = 0; j < n-1-i; j++) { 
+    for (let i = 0; i < (arr.length-1); i++) { 
+      for (let j = 0; j < (arr.length-1-i); j++) { 
         if (comparation(arr[j], arr[j+1])) { 
             let tempvar = arr[j+1]; 
             arr[j+1] = arr[j]; 
             arr[j] = tempvar; 
         }
       }
-    }   
+    } 
   },
 
   quickSort(arr, comparation) {
     // TODO: допишите функцию быстрой сортировки
-    arr.sort(comparation);
+    if (arr.length < 2) {
+      return arr;
+    }
+    const pivot = arr[Math.floor(Math.random() * arr.length)];
+    let left = [];
+    let right = [];
+    let equal = [];
+  
+    for (let val of arr) {
+      if (comparation(val,pivot)) {
+        right.push(val);
+      } else if (!comparation(pivot,val)) {
+        equal.push(val);
+      } else {
+        left.push(val);
+      }
+    }
+    fruits = [
+      ...left,
+      ...equal,
+      ...right
+    ];
   },
 
   // выполняет сортировку и производит замер времени
