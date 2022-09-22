@@ -190,7 +190,6 @@ let sortTime = '-'; // инициализация состояния време�
 
 const comparationColor = (a, b) => {
   // TODO: допишите функцию сравнения двух элементов по цвету
-  console.log(a.color, b.color)
   return (a.color == b.color) ? 0 : (a.color < b.color ?  1 : -1);
 };
 
